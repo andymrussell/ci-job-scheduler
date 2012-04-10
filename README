@@ -1,0 +1,19 @@
+My Codeigniter Job Scheduler Module is used to create and store jobs in a MySQL database.
+The main purpose of this module is to help generate a job queue that can be processed in the order the jobs are added.
+This is built on Codeigniter 2.0, and uses HMVC Modular Extension.Here is a sample usage of the library:
+
+//Add a job to the scheduler
+$this->job_scheduler->add('email/clients', 'send', $object, '1');
+
+When this job is scheduled to run, we send over the data object to the specified module controller and method.All we need to set up is one cron job that runs every minute or 2 minutes on the server that calls our main jobs module. This is something like cli.php “job/get”
+
+The module works out what job is next and calls the appropriate method.There are 3 return paramaters you can pass back within the job.
+
+//The job processed ok
+return 'complete';
+
+//The job had an error, but lets try it again.
+return 'error_count';
+
+//There was a permanent error with the job type
+return 'error';
