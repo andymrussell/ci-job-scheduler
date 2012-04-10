@@ -17,3 +17,6 @@ return 'error_count';
 
 //There was a permanent error with the job type
 return 'error';
+
+
+http://www.andy-russell.com/job-scheduler-library
